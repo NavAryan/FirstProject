@@ -141,3 +141,13 @@ textarea { min-height:105px; resize:vertical; }
 @media (max-width:560px){.now-clock{font-size:47px}.now-hero h2{font-size:27px}.metrics-4{grid-template-columns:1fr 1fr}.goal-grid{grid-template-columns:1fr}.reality-grid{grid-template-columns:1fr 1fr}.finish-grid{grid-template-columns:1fr}.lane-row{grid-template-columns:80px 1fr 30px}.now-actions .ghost{width:100%}}
 @media (max-width:390px){.mode-strip{gap:4px}.mode-btn{padding:8px 3px}.mode-btn b{font-size:10px}.reality-grid{grid-template-columns:1fr}.week-strip{gap:3px}.week-day{padding:7px 2px}}
 .energy-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;padding:9px 11px;border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:15px}.energy-row>span{font-size:10px;color:var(--muted)}.energy-row>div{display:flex;gap:5px}.energy-btn{width:29px;height:29px;border-radius:9px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font-size:11px}.energy-btn.active{background:var(--accent);border-color:var(--accent);color:white}.tomorrow-list{display:grid;gap:7px}.tomorrow-card{display:flex;gap:10px;align-items:center;border:1px solid var(--line);background:var(--panel);border-radius:15px;padding:11px}.tomorrow-card>span{font-size:20px}.tomorrow-card strong{display:block;font-size:12px}.tomorrow-card small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+
+/* Mission Control 3.0 */
+.agent-learning{margin-top:8px;padding-top:8px;border-top:1px solid color-mix(in srgb,var(--border) 70%,transparent);font-size:12px;color:var(--muted)}
+.agent-learning b{color:var(--text)}
+.system-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-bottom:10px}
+.system-item{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid var(--border);border-radius:15px;background:var(--panel)}
+.system-item strong,.system-item small{display:block}.system-item small{color:var(--muted);margin-top:3px;font-size:12px;line-height:1.3}
+.status-dot{width:9px;height:9px;border-radius:50%;margin-top:5px;flex:0 0 auto;background:var(--muted)}
+.status-dot.good{background:#4ade80;box-shadow:0 0 0 4px rgba(74,222,128,.08)}.status-dot.warn{background:#fbbf24}.status-dot.neutral{background:#94a3b8}
+@media(max-width:520px){.system-grid{grid-template-columns:1fr}}

@@ -1,5 +1,5 @@
 {
-  "name": "Mission Control",
+  "name": "Mission Control 3.0",
   "short_name": "Mission",
   "id": "./",
   "start_url": "./index.html",
@@ -7,16 +7,16 @@
   "display": "standalone",
   "background_color": "#090c13",
   "theme_color": "#090c13",
-  "description": "Adaptive personal operating system for attention, progress, money, health and life direction.",
+  "description": "Adaptive offline-first personal operating system with local intelligence.",
   "icons": [
     {
-      "src": "./icon-192.png",
+      "src": "./assets/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "./icon-512.png",
+      "src": "./assets/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
