@@ -1,5 +1,5 @@
 {
-  "name": "Mission Control 3.0",
+  "name": "Mission Control 3.0.1",
   "short_name": "Mission",
   "id": "./",
   "start_url": "./index.html",
@@ -10,13 +10,13 @@
   "description": "Adaptive offline-first personal operating system with local intelligence.",
   "icons": [
     {
-      "src": "./assets/icon-192.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "./assets/icon-512.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

@@ -9,12 +9,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Mission Control">
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Mission Control 3.0 — an adaptive, offline-first personal operating system with local intelligence.">
+  <meta name="description" content="Mission Control 3.0.1 — an adaptive, offline-first personal operating system with local intelligence.">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="apple-touch-icon" href="./icon-192.png">
   <link rel="icon" href="./icon-192.png">
   <link rel="stylesheet" href="./styles.css">
-  <title>Mission Control 3.0</title>
+  <title>Mission Control 3.0.1</title>
 </head>
 <body>
   <div id="app" class="app-shell" aria-live="polite">
@@ -23,13 +23,13 @@
         <div class="kicker">PERSONAL OS</div>
         <div class="brand-row">
           <h1>Mission Control</h1>
-          <span class="version-pill">3.0</span>
+          <span class="version-pill">3.0.1</span>
         </div>
       </div>
-      <button id="profileButton" class="icon-button" aria-label="Open settings">⚙️</button>
+      <div class="top-actions"><button id="commandButton" class="icon-button" aria-label="Open command centre">⌘</button><button id="profileButton" class="icon-button" aria-label="Open settings">⚙️</button></div>
     </header>
 
-    <main id="viewRoot" class="view-root"></main>
+    <main id="viewRoot" class="view-root"><div class="panel startup-panel"><div class="date-label">MISSION CONTROL</div><h3>Starting…</h3><p class="task-meta">Loading your local workspace.</p></div></main>
 
     <nav class="tabbar" aria-label="Primary navigation">
       <button class="tab active" data-view="today"><span>⚡</span><small>Today</small></button>
@@ -42,8 +42,24 @@
 
   <dialog id="taskDialog" class="sheet-dialog"></dialog>
   <dialog id="quickAddDialog" class="sheet-dialog"></dialog>
+  <dialog id="commandDialog" class="sheet-dialog"></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script type="module" src="./app.js"></script>
+
+  <script>
+    (()=>{
+      const fail=(message)=>{
+        setTimeout(()=>{
+          if(document.documentElement.dataset.mcBooted==='1') return;
+          const root=document.getElementById('viewRoot');
+          if(root) root.innerHTML='<div class="panel startup-panel"><div class="date-label">RECOVERY</div><h3>Mission Control could not finish starting.</h3><p class="task-meta">'+String(message||'A startup file failed to load. Refresh once after updating the GitHub files.')+'</p></div>';
+        },250);
+      };
+      window.addEventListener('error',e=>fail(e.message));
+      window.addEventListener('unhandledrejection',e=>fail(e.reason?.message||e.reason));
+      setTimeout(()=>fail('The app is taking unusually long to start. Refresh Safari once; if this remains, verify all 3.0.1 files were uploaded.'),5000);
+    })();
+  </script>
+  <script type="module" src="./app.js?v=3.0.1"></script>
 </body>
 </html>
