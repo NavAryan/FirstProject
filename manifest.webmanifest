@@ -1,17 +1,25 @@
 {
-  "name": "Mission Control 2.0",
+  "name": "Mission Control",
   "short_name": "Mission",
-  "description": "A smart personal operating system for focus, career, business, health and money.",
   "id": "./",
-  "start_url": "./",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait-primary",
   "background_color": "#090c13",
-  "theme_color": "#0a0d14",
-  "categories": ["productivity", "lifestyle"],
+  "theme_color": "#090c13",
+  "description": "Adaptive personal operating system for attention, progress, money, health and life direction.",
   "icons": [
-    {"src":"./icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"./icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }

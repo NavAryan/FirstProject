@@ -3,47 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#0a0d14">
+  <meta name="theme-color" content="#090c13">
   <meta name="color-scheme" content="dark light">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Mission Control">
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Mission Control — a smart personal operating system for focus, work, money, health and progress.">
+  <meta name="description" content="Mission Control — an adaptive personal operating system for attention, progress, money, health and life direction.">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="apple-touch-icon" href="./icon-192.png">
   <link rel="icon" href="./icon-192.png">
   <link rel="stylesheet" href="./styles.css">
-  <title>Mission Control 2.0</title>
+  <title>Mission Control 2.5</title>
 </head>
 <body>
   <div id="app" class="app-shell" aria-live="polite">
     <header class="topbar">
       <div>
         <div class="kicker">PERSONAL OS</div>
-        <div class="brand-row">
-          <h1>Mission Control</h1>
-          <span class="version-pill">2.0</span>
-        </div>
+        <div class="brand-row"><h1>Mission Control</h1><span class="version-pill">2.5</span></div>
       </div>
-      <button id="profileButton" class="icon-button" aria-label="Open settings">⚙️</button>
+      <div class="top-actions">
+        <button id="commandButton" class="icon-button command-key" aria-label="Open Command Centre">⌘</button>
+        <button id="profileButton" class="icon-button" aria-label="Open settings">⚙️</button>
+      </div>
     </header>
-
     <main id="viewRoot" class="view-root"></main>
-
     <nav class="tabbar" aria-label="Primary navigation">
-      <button class="tab active" data-view="today"><span>⚡</span><small>Today</small></button>
+      <button class="tab active" data-view="today"><span>⚡</span><small>Now</small></button>
       <button class="tab" data-view="focus"><span>◎</span><small>Focus</small></button>
+      <button class="tab" data-view="plan"><span>◫</span><small>Plan</small></button>
       <button class="tab" data-view="paths"><span>🧭</span><small>Paths</small></button>
-      <button class="tab" data-view="insights"><span>◔</span><small>Insights</small></button>
-      <button class="tab" data-view="more"><span>•••</span><small>More</small></button>
+      <button class="tab" data-view="insights"><span>◔</span><small>Review</small></button>
     </nav>
   </div>
-
   <dialog id="taskDialog" class="sheet-dialog"></dialog>
   <dialog id="quickAddDialog" class="sheet-dialog"></dialog>
+  <dialog id="commandDialog" class="sheet-dialog"></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-
   <script type="module" src="./app.js"></script>
 </body>
 </html>

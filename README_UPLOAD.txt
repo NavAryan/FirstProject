@@ -1,17 +1,17 @@
-MISSION CONTROL 2.0 — GITHUB PAGES DEPLOY BUILD
+MISSION CONTROL 2.5 — GITHUB PAGES BUILD
 
-Upload the CONTENTS of this dist folder to the ROOT of your GitHub Pages repository.
-Files required:
+Upload all files in this folder to the ROOT of your existing GitHub Pages repository, replacing the older Mission Control files.
+
+Files to upload:
 - index.html
-- styles.css
 - app.js
+- styles.css
 - sw.js
 - manifest.webmanifest
 - icon-192.png
 - icon-512.png
-- .nojekyll (optional but included)
+- .nojekyll
 
-For NavAryan/FirstProject using branch deployment:
-Settings -> Pages -> Deploy from a branch -> master -> /(root)
+Keep the same GitHub Pages URL so existing IndexedDB data can be upgraded in place.
 
-After GitHub Pages updates, open the site in Safari. If you had v1 installed, refresh once or remove/re-add the Home Screen app if Safari holds an old service-worker cache.
+After upload, open the site in Safari and refresh. If an old service-worker version appears, close the tab and reopen the same URL.
