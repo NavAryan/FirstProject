@@ -11,7 +11,7 @@ let wakeLock=null;
 const uid=()=>crypto.randomUUID?.()||String(Date.now())+Math.random().toString(36).slice(2);
 const day=()=>ensureDay(selectedDate);
 const notify=message=>{toast.textContent=message;toast.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('visible'),4200);};
-function report(error){console.error(error);notify(error?.message||'That change could not be saved. Please try again.');}
+function report(error){console.error(error);if(error.workspaceChanged&&!dialog.open)render();notify(error?.message||'That change could not be saved. Please try again.');}
 async function safely(fn){try{return await fn();}catch(e){report(e);}}
 function render(){const s=getState();if(!s)return;const d=day();root.innerHTML=view==='today'?ui.todayView(s,d):view==='plan'?ui.planView(s,d,backlog(selectedDate).length):view==='focus'?ui.focusView(s,ensureDay(s.focus?.date||selectedDate),s.focus):view==='paths'?ui.pathsView(s):view==='insights'?ui.insightsView(s,d):ui.moreView(s,d,runtime);document.querySelectorAll('.nav-item').forEach(b=>{b.classList.toggle('active',b.dataset.view===view);if(b.dataset.view===view)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});document.getElementById('connectionLabel').textContent=runtime.offline?'Working offline':'Your personal workspace';updateBadge();}
 function navigate(next){if(next==='focus'&&getState().focus)selectedDate=getState().focus.date;view=next;render();window.scrollTo({top:0,behavior:'instant'});}
@@ -53,7 +53,7 @@ async function action(name,data={},element){const s=getState(),d=day();switch(na
  case 'new-task':show(ui.taskForm({},selectedDate,day().blocks));break;case 'edit-task':openTask(data.id);break;
  case 'pin-task':{const t=d.tasks.find(t=>t.id===data.id);if(t)await updateTask(t.id,{top:!t.top},selectedDate);render();break;}
  case 'toggle-task':{const t=d.tasks.find(t=>t.id===data.id);if(t){await toggleTask(t.id,element?.type==='checkbox'?element.checked:!t.done,selectedDate);if(getState().focus?.taskId===t.id&&getState().focus.running)await pauseFocus(true);}render();break;}
- case 'delete-task':confirmAction('Delete this mission?','Its history stays saved. For a recurring mission, future repeats will also stop.',async()=>{await removeTask(data.id,selectedDate);close();render();},'Delete mission');break;
+ case 'delete-task':confirmAction('Delete this mission?','Its history stays saved. For a recurring mission, future repeats will also stop.',async()=>{if(getState().focus?.taskId===data.id){await pauseFocus();await mutate(s=>s.focus=null);}await removeTask(data.id,selectedDate);close();render();},'Delete mission');break;
  case 'new-block':show(ui.blockForm());break;case 'edit-block':{const b=d.blocks.find(b=>b.id===data.id);if(b)show(ui.blockForm(b));break;}
  case 'toggle-block':await mutate(()=>{const b=d.blocks.find(b=>b.id===data.id);if(b)b.done=!b.done;});render();break;
  case 'delete-block':confirmAction('Delete this time block?','Your missions and their progress will stay saved.',async()=>{await mutate(()=>{d.blocks=d.blocks.filter(b=>b.id!==data.id);d.tasks.forEach(t=>{if(t.blockId===data.id)t.blockId='';});});close();render();},'Delete block');break;

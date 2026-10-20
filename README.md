@@ -52,6 +52,6 @@ The existing GitHub Pages deployment from `master` continues publishing the appl
 
 On iPhone, keep the existing Home Screen app. Open it online; use **Save & update** if shown. If the old shell remains, close Mission Control and its Safari tabs, then reopen. Do not clear website data to force an update.
 
-## Release 4.0
+## Release 4.0.1
 
-A redesigned responsive interface; whole-plan import and review; core-three outcomes; linked time blocks; configurable daily habits; date navigation and deliberate rollover; review-to-tomorrow workflow; persistent focus timer; actual net earnings; seven-day insights; ordinary and encrypted backups; previous-version recovery; and safer app updates.
+A redesigned responsive interface; whole-plan import and review; core-three outcomes; linked time blocks; configurable daily habits; date navigation and deliberate rollover; review-to-tomorrow workflow; persistent focus timer; actual net earnings; seven-day insights; ordinary and encrypted backups; previous-version recovery; safer app updates, and cross-tab write protection.
