@@ -1,4 +1,4 @@
-import { parseCapture } from './smart.js';
+import { parseCapture } from './smart.js?v=4.0.2';
 
 export const dateKey = (date = new Date()) => `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
 export const shiftDate = (key, n) => { const d = new Date(key+'T12:00:00'); d.setDate(d.getDate()+n); return dateKey(d); };

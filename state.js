@@ -1,6 +1,6 @@
-import { dbGet,dbSet,migrateLegacy } from './db.js';
-import { defaultState,defaultHabits,goalMap,TODAY_KEY } from './defaults.js';
-import { dateKey,shiftDate,validDate,normalTitle,minutes } from './planner.js';
+import { dbGet,dbSet,migrateLegacy } from './db.js?v=4.0.2';
+import { defaultState,defaultHabits,goalMap,TODAY_KEY } from './defaults.js?v=4.0.2';
+import { dateKey,shiftDate,validDate,normalTitle,minutes } from './planner.js?v=4.0.2';
 
 export const localDateKey=dateKey;
 const copy=x=>structuredClone(x);

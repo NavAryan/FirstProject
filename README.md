@@ -48,10 +48,10 @@ For the managed preview environment, run `node scripts/prepare-preview.mjs` then
 
 ## Deployment and updates
 
-The existing GitHub Pages deployment from `master` continues publishing the application. JavaScript, styles and the offline cache share a release version. The service worker precaches the app shell, waits before replacing an existing release, and offers **Save & update**. Pause a running timer and close forms before applying it. Cache cleanup is restricted to Mission Control caches.
+The existing GitHub Pages deployment from `master` continues publishing the application. Every JavaScript module, styles and the offline cache share a release version. Precache requests bypass the HTTP cache to avoid mixing old and new code. The service worker precaches the app shell, waits before replacing an existing release, and offers **Save & update**. Pause a running timer and close forms before applying it. Cache cleanup is restricted to Mission Control caches.
 
 On iPhone, keep the existing Home Screen app. Open it online; use **Save & update** if shown. If the old shell remains, close Mission Control and its Safari tabs, then reopen. Do not clear website data to force an update.
 
-## Release 4.0.1
+## Release 4.0.2
 
 A redesigned responsive interface; whole-plan import and review; core-three outcomes; linked time blocks; configurable daily habits; date navigation and deliberate rollover; review-to-tomorrow workflow; persistent focus timer; actual net earnings; seven-day insights; ordinary and encrypted backups; previous-version recovery; safer app updates, and cross-tab write protection.

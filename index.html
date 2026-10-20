@@ -13,7 +13,7 @@
  <link rel="manifest" href="./manifest.webmanifest">
  <link rel="apple-touch-icon" href="./icon-192.png">
  <link rel="icon" href="./icon-192.png">
- <link rel="stylesheet" href="./styles.css?v=4.0.1">
+ <link rel="stylesheet" href="./styles.css?v=4.0.2">
  <title>Mission Control · Your day, with direction</title>
 </head>
 <body>
@@ -41,7 +41,7 @@
  </div>
  <dialog id="mainDialog" aria-labelledby="sheetTitle"></dialog>
  <div id="toast" class="toast" role="status" aria-live="polite"></div>
- <script type="module" src="./app.js?v=4.0.1"></script>
+ <script type="module" src="./app.js?v=4.0.2"></script>
  <script>
  setTimeout(()=>{if(document.documentElement.dataset.mcBooted==='1')return;const el=document.querySelector('.startup-panel');if(el){const message=document.createElement('p');message.textContent='Still loading? Close other Mission Control tabs and reopen this app. Keep your browser data to preserve your progress.';el.append(message);const button=document.createElement('button');button.textContent='Try again';button.className='primary';button.onclick=()=>location.reload();el.append(button);}},10000);
  </script>

@@ -1,4 +1,4 @@
-import { goalMap } from './defaults.js';
+import { goalMap } from './defaults.js?v=4.0.2';
 
 export function minutesFromHHMM(value) {
   if (!value || !/^\d{2}:\d{2}$/.test(value)) return null;

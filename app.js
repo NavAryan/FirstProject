@@ -1,8 +1,8 @@
-import { initState,getState,ensureDay,localDateKey,mutate,saveState,addTask,updateTask,toggleTask,removeTask,moveTask,backlog,importPlan,setHabit,saveHabit,saveReview,recordFocusSession,replaceState,restorePreUpgrade } from './state.js';
-import { exportAll,dbGet } from './db.js';
-import { dateKey,shiftDate,validDate,minutes,clock,nowMinutes,parsePlan,starterPlan,schedule,durationLabel } from './planner.js';
-import { parseCapture } from './smart.js';
-import * as ui from './ui.js';
+import { initState,getState,ensureDay,localDateKey,mutate,saveState,addTask,updateTask,toggleTask,removeTask,moveTask,backlog,importPlan,setHabit,saveHabit,saveReview,recordFocusSession,replaceState,restorePreUpgrade } from './state.js?v=4.0.2';
+import { exportAll,dbGet } from './db.js?v=4.0.2';
+import { dateKey,shiftDate,validDate,minutes,clock,nowMinutes,parsePlan,starterPlan,schedule,durationLabel } from './planner.js?v=4.0.2';
+import { parseCapture } from './smart.js?v=4.0.2';
+import * as ui from './ui.js?v=4.0.2';
 
 const root=document.getElementById('viewRoot'),dialog=document.getElementById('mainDialog'),toast=document.getElementById('toast');
 let view='today',selectedDate=dateKey(),lastToday=dateKey(),parsedPlan=null,planDraft=null,restorePayload=null,pendingConfirm=null,toastTimer,expiryBusy=false,swRegistration=null,deferredUpdate=null;
@@ -38,7 +38,7 @@ const toB64=bytes=>{let out='';for(let i=0;i<bytes.length;i+=8192)out+=String.fr
 const fromB64=text=>Uint8Array.from(atob(text),c=>c.charCodeAt(0));
 async function backupKey(pass,salt){const material=await crypto.subtle.importKey('raw',new TextEncoder().encode(pass),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:210000,hash:'SHA-256'},material,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);}
 function reviewRestore(payload){if(payload.app!=='Mission Control'||!payload.state?.daily||typeof payload.state.daily!=='object')throw Error('This is not a valid Mission Control backup.');if(Number(payload.state.version)>5)throw Error('This backup is from a newer app. Update Mission Control before restoring it.');restorePayload=payload;const count=Object.values(payload.state.daily).reduce((sum,d)=>sum+(Array.isArray(d.tasks)?d.tasks.length:0),0);confirmAction('Restore this workspace?',`This backup contains ${Object.keys(payload.state.daily).length} days and ${count} missions. It replaces the current workspace. A recovery copy of your current entries will be kept on this device.`,async()=>{await dbRecovery();await pauseFocus();await replaceState(restorePayload.state);close();render();notify('Your workspace has been restored.');},'Restore workspace');}
-async function dbRecovery(){const {dbSet}=await import('./db.js');await dbSet('before-restore',structuredClone(getState()));}
+async function dbRecovery(){const {dbSet}=await import('./db.js?v=4.0.2');await dbSet('before-restore',structuredClone(getState()));}
 async function readBackup(file){if(file.size>10*1024*1024)throw Error('Choose a Mission Control backup under 10 MB.');const payload=JSON.parse(await file.text());if(payload.app==='Mission Control Encrypted Backup'){restorePayload=payload;show(ui.sheet('Unlock your backup.',`<form id="decryptForm">${passwordField()}<button type="submit" class="primary">Unlock and review</button></form>`));}else reviewRestore(payload);}
 const passwordField=()=>'<label class="field"><span>Backup passphrase</span><input name="passphrase" type="password" required minlength="8" autocomplete="off"></label>';
 function encryptedDialog(){show(ui.sheet('A private copy of your progress.',`<p class="subtle">Choose a passphrase you can remember. You need the same passphrase to restore this file.</p><form id="encryptForm">${passwordField()}<button class="primary" type="submit">Export encrypted backup</button></form>`));}

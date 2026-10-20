@@ -1,7 +1,7 @@
-const VERSION='4.0.1';
+const VERSION='4.0.2';
 const CACHE=`mission-control-${VERSION}`;
-const FILES=['./','./index.html','./styles.css?v=4.0.1','./manifest.webmanifest','./icon-192.png','./icon-512.png','./app.js?v=4.0.1','./db.js','./defaults.js','./smart.js','./planner.js','./state.js','./ui.js'];
-self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)));});
+const FILES=['./','./index.html','./styles.css?v=4.0.2','./manifest.webmanifest','./icon-192.png','./icon-512.png','./app.js?v=4.0.2','./db.js?v=4.0.2','./defaults.js?v=4.0.2','./smart.js?v=4.0.2','./planner.js?v=4.0.2','./state.js?v=4.0.2','./ui.js?v=4.0.2'];
+self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES.map(url=>new Request(new URL(url,self.registration.scope),{cache:'reload'})))));});
 self.addEventListener('message',event=>{if(event.data?.type==='SKIP_WAITING')self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('mission-control-')&&k!==CACHE).map(k=>caches.delete(k)));await self.clients.claim();})());});
 self.addEventListener('fetch',event=>{
