@@ -1,13 +1,13 @@
 {
-  "name": "Mission Control 3.0.1",
+  "name": "Mission Control",
   "short_name": "Mission",
   "id": "./",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#090c13",
-  "theme_color": "#090c13",
-  "description": "Adaptive offline-first personal operating system with local intelligence.",
+  "background_color": "#0b1215",
+  "theme_color": "#0b1215",
+  "description": "Plan meaningful outcomes, protect your daily habits, and make room for real life.",
   "icons": [
     {
       "src": "./icon-192.png",

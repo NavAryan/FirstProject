@@ -90,7 +90,7 @@ export function plannerReason(task, tasks, context = {}) {
 
 export function dayReadiness(tasks) {
   const core = tasks.filter(t=>!t.bonus);
-  if (!core.length) return 100;
+  if (!core.length) return 0;
   const weightedTotal = core.reduce((s,t)=>s+(t.xp||50),0);
   const weightedDone = core.filter(t=>t.done).reduce((s,t)=>s+(t.xp||50),0);
   return Math.round(weightedDone/weightedTotal*100);
@@ -163,6 +163,8 @@ export function parseCapture(text, now=new Date()) {
   else if(/adi|driving instructor|theory|hazard|shabir|lesson/.test(lower)){area='ADI';goal='survive';project='ADI';}
   else if(/dronix|drone|client|prospect|shoot/.test(lower)){area='Business';goal='build';project='Dronix';}
   else if(/job|cv|interview|codex|data|portfolio|github|sql|python/.test(lower)){area='Career';goal='stabilise';project='Career';}
+  else if(/quran|prayer|memorisation|memorization/.test(lower)){area='Faith';goal='live';project='Faith';}
+  else if(/spanish|language|reading|read a|read my/.test(lower)){area='Learning';goal='build';project='Learning';}
   else if(/gym|workout|exercise|conditioning|run/.test(lower)){area='Body';goal='live';project='Body';}
   else if(/deliver|cash|earn|income|money|fuel/.test(lower)){area='Money';goal='survive';project='Cash flow';}
   else if(/doctor|health|appointment|hospital|gp|dentist/.test(lower)){area='Health';goal='live';project='Health';}
@@ -207,3 +209,4 @@ export function parseCapture(text, now=new Date()) {
     .replace(/\bfor\b\s*$/i,'').replace(/\s+/g,' ').trim();
   return {title:cleaned||raw,detail:'Captured in Command Centre',area,goal,project,date,time,duration,impact:3,urgency:urgent,income,energy:area==='Career'?4:2,priority:3,fixed};
 }
+
